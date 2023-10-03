@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,9 +22,22 @@ namespace NetWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Client.Client _client;
+        
         public MainWindow()
         {
             InitializeComponent();
+            _client = new Client.Client(new TcpClient());
+        }
+        
+        private void Connect_OnClick(object sender, RoutedEventArgs e)
+        {
+            _client.connect(new IPEndPoint(IPAddress.Loopback, 8080));
+        }
+
+        private async void GetQuote_OnClick(object sender, RoutedEventArgs e)
+        {
+            Quote.Text = await _client.getQuote();
         }
     }
 }
