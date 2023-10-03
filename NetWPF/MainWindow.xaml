@@ -7,7 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBox Name="Username" Width="Auto" MinWidth="50" Margin="0 0 20 0"></TextBox>
+            <TextBox Name="Password" Width="Auto" MinWidth="50"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
             <Button Click="Connect_OnClick">Connect</Button>
             <Button Click="GetQuote_OnClick">Get quote</Button>
             <TextBlock Name="Quote"></TextBlock>

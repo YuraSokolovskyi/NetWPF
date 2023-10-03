@@ -33,6 +33,7 @@ namespace NetWPF
         private void Connect_OnClick(object sender, RoutedEventArgs e)
         {
             _client.connect(new IPEndPoint(IPAddress.Loopback, 8080));
+            _client.writeToServer($"{Username.Text}:{Password.Text}");
         }
 
         private async void GetQuote_OnClick(object sender, RoutedEventArgs e)
