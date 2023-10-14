@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="RickAndMorty_API.Controls.CharacterCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:RickAndMorty_API.Controls"
+             mc:Ignorable="d">
+    <Grid>
+        <Border CornerRadius="8" Background="#3c3e44" Width="600">
+            <StackPanel Height="Auto" Orientation="Horizontal">
+                <Border CornerRadius="8 0 0 8" Width="220" Height="220">
+                    <Border.Background>
+                        <ImageBrush ImageSource="{Binding ImageUrl}" Stretch="Fill"/>
+                    </Border.Background>
+                </Border>
+                
+                <StackPanel Margin="13">
+                    <StackPanel VerticalAlignment="Top" Margin="0 0 0 15">
+                        <TextBlock Text="{Binding Name}" FontSize="24" Foreground="White" FontWeight="700"></TextBlock>
+                        
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse Width="9" Height="9" Margin="0 0 6 0" VerticalAlignment="Center">
+                                <Ellipse.Style>
+                                    <Style TargetType="Ellipse">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Status}" Value="Alive">
+                                                <Setter Property="Fill" Value="Green"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Status}" Value="Dead">
+                                                <Setter Property="Fill" Value="Red"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Status}" Value="unknown">
+                                                <Setter Property="Fill" Value="Gray"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Ellipse.Style>
+                            </Ellipse>
+                        
+                            <TextBlock x:Name="Status" Text="{Binding Status}" Foreground="White" FontSize="16" FontWeight="500"></TextBlock>
+                            <TextBlock Foreground="White" FontSize="16" FontWeight="500" Margin="5 0">-</TextBlock>
+                            <TextBlock x:Name="Species" Text="{Binding Species}" Foreground="White" FontSize="16" FontWeight="500"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                    
+                    <StackPanel VerticalAlignment="Center" Margin="0 0 0 15">
+                        <TextBlock Foreground="#9e9e9e" FontSize="16" FontWeight="500">Location:</TextBlock>
+                        <TextBlock Foreground="White" FontSize="16" Text="{Binding Location}"></TextBlock>
+                    </StackPanel>
+                    
+                    <StackPanel VerticalAlignment="Center" Margin="0 0 0 15">
+                        <TextBlock Foreground="#9e9e9e" FontSize="16" FontWeight="500">Gender:</TextBlock>
+                        <TextBlock Foreground="White" FontSize="16" Text="{Binding Gender}"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

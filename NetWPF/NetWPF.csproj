@@ -7,4 +7,8 @@
         <UseWPF>true</UseWPF>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\RICK_AND_MORTY_CORE\RICK_AND_MORTY_CORE.csproj" />
+    </ItemGroup>
+
 </Project>
